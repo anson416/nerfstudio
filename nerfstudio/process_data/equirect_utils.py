@@ -80,7 +80,7 @@ def remap_cubic(
 
     grid = torch.stack((grid_x, grid_y), dim=-1).unsqueeze(0).expand(batch_size, -1, -1, -1)
 
-    return torch.nn.functional.grid_sample(img, grid, mode="bicubic", padding_mode="zeros")
+    return torch.nn.functional.grid_sample(img, grid, mode="bicubic", padding_mode="zeros", align_corners=False)
 
 
 def equirect2persp(img: torch.Tensor, fov: int, theta: int, phi: int, hd: int, wd: int) -> torch.Tensor:
